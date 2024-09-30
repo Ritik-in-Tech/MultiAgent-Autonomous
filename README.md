@@ -63,7 +63,7 @@ OPENAI_API_KEY='Your_openai_key'
 SERPER_API_KEY='Your_serper_api_key'
 ```
 
-You can get seper API key from this url [Serper_Key](https://serper.dev/api-key) and the OpenAI API key from [Opne_API](https://platform.openai.com/api-keys)
+You can get seper API key from this url [Serper_Key](https://serper.dev/api-key) and the OpenAI API key from [Open_API](https://platform.openai.com/api-keys)
 
 ## Contributing
 
