@@ -1,0 +1,76 @@
+<launch>
+  <arg name="model" default="waffle" doc="model type [burger, waffle, waffle_pi]"/>
+  <arg name="x_pos" default="0.0"/>
+  <arg name="y_pos" default="0.0"/>
+  <arg name="z_pos" default="0.0"/>
+
+  <!-- TurtleBot 1 Position -->
+  <arg name="tb1_x_pos" default="0.0"/>
+  <arg name="tb1_y_pos" default="0.0"/>
+  <arg name="tb1_z_pos" default="0.0"/>
+
+  <!-- TurtleBot 2 Position -->
+  <arg name="tb2_x_pos" default="2.20"/>
+  <arg name="tb2_y_pos" default="3.25"/>
+  <arg name="tb2_z_pos" default="0.0"/>
+
+  <!-- TurtleBot 3 Position -->
+  <arg name="tb3_x_pos" default="-1.29"/>
+  <arg name="tb3_y_pos" default="0.85"/>
+  <arg name="tb3_z_pos" default="0.0"/>
+
+  <!-- TurtleBot 4 Position -->
+  <arg name="tb4_x_pos" default="5.18"/>
+  <arg name="tb4_y_pos" default="-1.44"/>
+  <arg name="tb4_z_pos" default="0.0"/>
+
+  <!-- TurtleBot 5 Position -->
+  <arg name="tb5_x_pos" default="0.10"/>
+  <arg name="tb5_y_pos" default="-0.45"/>
+  <arg name="tb5_z_pos" default="0.0"/>
+
+  <!-- Include Gazebo empty world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find turtlebot3_gazebo)/worlds/autonomous.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <!-- Spawn TurtleBot 1 in its own namespace -->
+  <group ns="turtlebot1">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf_tb1" 
+          args="-urdf -model turtlebot3_1 -x $(arg tb1_x_pos) -y $(arg tb1_y_pos) -z $(arg tb1_z_pos) -param robot_description" />
+  </group>
+
+  <!-- Spawn TurtleBot 2 in its own namespace -->
+  <group ns="turtlebot2">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf_tb2" 
+          args="-urdf -model turtlebot3_2 -x $(arg tb2_x_pos) -y $(arg tb2_y_pos) -z $(arg tb2_z_pos) -param robot_description" />
+  </group>
+
+  <!-- Spawn TurtleBot 3 in its own namespace -->
+  <group ns="turtlebot3">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf_tb3" 
+          args="-urdf -model turtlebot3_3 -x $(arg tb3_x_pos) -y $(arg tb3_y_pos) -z $(arg tb3_z_pos) -param robot_description" />
+  </group>
+
+  <!-- Spawn TurtleBot 4 in its own namespace -->
+  <group ns="turtlebot4">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf_tb4" 
+          args="-urdf -model turtlebot3_4 -x $(arg tb4_x_pos) -y $(arg tb4_y_pos) -z $(arg tb4_z_pos) -param robot_description" />
+  </group>
+
+  <!-- Spawn TurtleBot 5 in its own namespace -->
+  <group ns="turtlebot5">
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf_tb5" 
+          args="-urdf -model turtlebot4_5 -x $(arg tb5_x_pos) -y $(arg tb5_y_pos) -z $(arg tb5_z_pos) -param robot_description" />
+  </group>
+</launch>

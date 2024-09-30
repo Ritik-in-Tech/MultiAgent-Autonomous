@@ -1,0 +1,13 @@
+navigate_task:
+  description: >
+    Navigate from the start location to the goal location using the given path.
+  expected_output: >
+    Reach the goal location successfully.
+  agent: ci_agent # Assigned to CI Agent
+
+move_to_host_task:
+  description: >
+    Move to a specific host location inside the building.
+  expected_output: >
+    Reach the host coordinates.
+  agent: b1_agent # Could also be assigned to b2_agent or others
