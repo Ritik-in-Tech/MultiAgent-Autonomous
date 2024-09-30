@@ -54,6 +54,17 @@ rosrun turtlebot3_gazebo move.py
 
 Please make sure you have created one directory named scripts inside the turtlebot3_gazebo directory and inside that scripts folder create one file named move.py. The code for the move.py you will get from this repo. Please make sure you have the worlds and models all are setup. Hope you will get the right command to run this project.
 
+To run the crew Ai python main.py you have to first declare the .env in crewai_project/turtlebot_navigation where you have mention two keys. For the security purposes I have put the .env on .gitignore.
+
+.env content
+
+```bash
+OPENAI_API_KEY='Your_openai_key'
+SERPER_API_KEY='Your_serper_api_key'
+```
+
+You can get seper API key from this url [Serper_Key](https://serper.dev/api-key) and the OpenAI API key from [Opne_API](https://platform.openai.com/api-keys)
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
